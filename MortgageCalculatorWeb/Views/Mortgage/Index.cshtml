@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MortgageCalculator.CustomerMortgage>
+
+@{
+    ViewBag.Title = "Customer Mortgages";
+}
+
+<h2>Customer Mortgages</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalLoan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Interest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Months)
+        </th>
+        <th>
+            Monthly Payment
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var (item, index) in Model.Select((x, index) => (x, index))) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalLoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Interest) %
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Months)
+        </td>
+        <td>
+            @(MortgageCalculator.TotalPaymentCalculator.CalculateMonthlyPayment(item).ToString("0.00")) €
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = index }) |
+            @Html.ActionLink("Delete", "Delete", new { id = index })
+        </td>
+    </tr>
+}
+
+</table>
