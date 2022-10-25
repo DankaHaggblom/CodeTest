@@ -4,3 +4,5 @@ CalculateMortgage prospects.txt
 To find the website go to http://18.206.54.202/Mortgage
 
 To find the code go to https://github.com/DankaHaggblom/CodeTest.git
+
+The docker file exists in CodeTest/MortgageCalculatorWeb/Dockerfile and .dockerignore
